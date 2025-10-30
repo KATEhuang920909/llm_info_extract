@@ -7,7 +7,7 @@ python main_v2.py \
     --per_device_train_batch_size 2 \
     --per_device_eval_batch_size 2 \
     --gradient_accumulation_steps 4 \
-    --num_train_epochs 5 \
+    --num_train_epochs 10 \
     --fine_tuning_type adalora \
     --lora_target q_proj,k_proj,v_proj,out_proj,fc1,fc2 \
     --output_dir checkpoint/qwen_adalora_sft \
