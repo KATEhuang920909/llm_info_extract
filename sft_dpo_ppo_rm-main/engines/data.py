@@ -64,18 +64,18 @@ class DataManager:
         kwargs = {}
         if not test:
             if self.data_args.train_file_dir is not None and os.path.exists(self.data_args.train_file_dir):
-                train_data_files = glob(f'{self.data_args.train_file_dir}/**/*.txt', recursive=True) + glob(
-                    f'{self.data_args.train_file_dir}/**/*.json', recursive=True) + glob(
-                    f'{self.data_args.train_file_dir}/**/*.jsonl', recursive=True)
-                self.logger.info(f"train files: {', '.join(train_data_files)}")
-                data_files['train'] = train_data_files
+                # train_data_files = glob(f'{self.data_args.train_file_dir}/**/*.txt', recursive=True) + glob(
+                #     f'{self.data_args.train_file_dir}/**/*.json', recursive=True) + glob(
+                #     f'{self.data_args.train_file_dir}/**/*.jsonl', recursive=True)
+                # self.logger.info(f"train files: {', '.join(train_data_files)}")
+                data_files['train'] = self.data_args.train_file_dir
             if self.training_args.do_eval and self.data_args.validation_file_dir is not None \
                     and os.path.exists(self.data_args.validation_file_dir):
-                eval_data_files = glob(f'{self.data_args.validation_file_dir}/**/*.txt', recursive=True) + glob(
-                    f'{self.data_args.validation_file_dir}/**/*.json', recursive=True) + glob(
-                    f'{self.data_args.validation_file_dir}/**/*.jsonl', recursive=True)
-                self.logger.info(f"eval files: {', '.join(eval_data_files)}")
-                data_files['validation'] = eval_data_files
+                # eval_data_files = glob(f'{self.data_args.validation_file_dir}/**/*.txt', recursive=True) + glob(
+                #     f'{self.data_args.validation_file_dir}/**/*.json', recursive=True) + glob(
+                #     f'{self.data_args.validation_file_dir}/**/*.jsonl', recursive=True)
+                # self.logger.info(f"eval files: {', '.join(eval_data_files)}")
+                data_files['validation'] = self.training_args.do_eval
             extension = 'text' if data_files['train'][0].endswith('txt') else 'json'
             if extension == 'text':
                 kwargs['keep_linebreaks'] = True
@@ -103,11 +103,11 @@ class DataManager:
                 )
         else:
             if self.data_args.test_file is not None and os.path.exists(self.data_args.test_file):
-                test_data_files = glob(
-                    f'{self.data_args.test_file}/**/*.json', recursive=True) + glob(
-                    f'{self.data_args.test_file}/**/*.jsonl', recursive=True)
-                self.logger.info(f"test files: {', '.join(test_data_files)}")
-                data_files['test'] = test_data_files
+                # test_data_files = glob(
+                #     f'{self.data_args.test_file}/**/*.json', recursive=True) + glob(
+                #     f'{self.data_args.test_file}/**/*.jsonl', recursive=True)
+                # self.logger.info(f"test files: {', '.join(test_data_files)}")
+                data_files['test'] = self.data_args.test_file
             raw_datasets = load_dataset(
                 'json',
                 data_files=data_files,
