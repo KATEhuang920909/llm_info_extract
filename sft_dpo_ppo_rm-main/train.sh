@@ -1,0 +1,17 @@
+python main_v2.py \
+    --mode sft_train \
+    --model_type qwen \
+    --model_path /root/LLM/Qwen2.5-7B-Instruct \
+    --train_file_dir /root/code/LLM/sft/CHIP2023-PromptCBLUE/small/train \
+    --validation_file_dir /root/code/LLM/sft/CHIP2023-PromptCBLUE/small/dev \
+    --per_device_train_batch_size 2 \
+    --per_device_eval_batch_size 2 \
+    --gradient_accumulation_steps 4 \
+    --num_train_epochs 5 \
+    --fine_tuning_type adalora \
+    --lora_target q_proj,k_proj,v_proj,out_proj,fc1,fc2 \
+    --output_dir checkpoint/qwen_adalora_sft \
+    --learning_rate 1e-4 \
+    --save_steps 1000 \
+    --logging_steps 20 \
+    --prompt_template qwen
