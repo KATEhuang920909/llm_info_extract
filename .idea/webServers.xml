@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="03790a62-0c1a-4479-96fd-8b93d49e4664" name="ITER">
+        <fileTransfer rootFolder="/root/autodl-tmp" accessType="SFTP" host="connect.westc.gpuhub.com" port="12266" sshConfigId="15700b85-8af2-4018-8678-800761234a0b" sshConfig="root@connect.westc.gpuhub.com:12266 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
